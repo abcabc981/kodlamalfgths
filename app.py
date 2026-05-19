@@ -107,8 +107,9 @@ with tab2:
     
     if st.button("Kodu Güncelle"):
         if eski_kod and degisiklik:
-            istek_metni = f"Mevcut Kod:\n```python\n{eski_kod}\n
-```\n\nBu kod üzerinde şu değişikliği yap/hatayı düzelt: {degisiklik}"
+            istek_metni = f"""Mevcut Kod:
+```python
+{eski_kod}
             
             st.session_state.chat_gecmisi.append({"role": "user", "content": istek_metni})
             
