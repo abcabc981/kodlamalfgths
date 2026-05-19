@@ -18,7 +18,7 @@ st.info("Bu sistem, oyunu en büyük parçalar halinde yazar. Kod kesilirse 'Dev
 SISTEM_MESAJI = """Sen dünyanın en iyi oyun programlama asistanısın. 
 Görevin: Kullanıcının istediği oyunu EN AZ PARÇAYA BÖLEREK, en uzun ve eksiksiz kod bloklarıyla yazmak. 
 Eğer kod çok uzunsa ve kesilirse, bir sonraki mesajda tam olarak kaldığın yerden (en son karakterden) hiçbir şeyi tekrar etmeden devam etmelisin.
-Kodların modüler, profesyonel ve hatasız olmalı. Sadece kod ve gerekli açıklamaları ver."""
+Kodların modüler, profesyonel and hatasız olmalı. Sadece kod ve gerekli açıklamaları ver."""
 
 # --- Hafıza Yönetimi ---
 if 'chat_gecmisi' not in st.session_state:
@@ -107,9 +107,10 @@ with tab2:
     
     if st.button("Kodu Güncelle"):
         if eski_kod and degisiklik:
-            # Hatalı tırnak yapısı tamamen düzeltildi ve tek satıra indirgendi
-            istek_metni = f"Mevcut Kod:\\n```python\\n{eski_kod}\\n
-```\\n\\nBu kod üzerinde şu değişikliği yap/hatayı düzelt: {degisiklik}"
+            # Kodun kırılmaması için string birleştirmeleri tamamen tek satırda ve güvenli hale getirildi:
+            baslangic = "Mevcut Kod:\n```python\n"
+            orta = "\n```\n\nBu kod üzerinde şu değişikliği yap: "
+            istek_metni = baslangic + eski_kod + orta + degisiklik
             
             st.session_state.chat_gecmisi.append({"role": "user", "content": istek_metni})
             
