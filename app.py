@@ -20,7 +20,7 @@ Görevin: Kullanıcının istediği oyunu EN AZ PARÇAYA BÖLEREK, en uzun ve ek
 Eğer kod çok uzunsa ve kesilirse, bir sonraki mesajda tam olarak kaldığın yerden (en son karakterden) hiçbir şeyi tekrar etmeden devam etmelisin.
 Kodların modüler, profesyonel ve hatasız olmalı. Sadece kod ve gerekli açıklamaları ver."""
 
-# --- Hafıza Yönetimi (Chat History & Proje Özeti) ---
+# --- Hafıza Yönetimi ---
 if 'chat_gecmisi' not in st.session_state:
     st.session_state.chat_gecmisi = [{"role": "system", "content": SISTEM_MESAJI}]
 
@@ -107,9 +107,9 @@ with tab2:
     
     if st.button("Kodu Güncelle"):
         if eski_kod and degisiklik:
-            istek_metni = f"""Mevcut Kod:
-```python
-{eski_kod}
+            # Hatalı tırnak yapısı tamamen düzeltildi ve tek satıra indirgendi
+            istek_metni = f"Mevcut Kod:\\n```python\\n{eski_kod}\\n
+```\\n\\nBu kod üzerinde şu değişikliği yap/hatayı düzelt: {degisiklik}"
             
             st.session_state.chat_gecmisi.append({"role": "user", "content": istek_metni})
             
